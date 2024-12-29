@@ -1,5 +1,3 @@
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "./styles/Globals.scss";
 import "./styles/global.css";
 
 import AboutMe from "./components/AboutMe";
