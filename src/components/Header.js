@@ -1,9 +1,9 @@
-import { React, useEffect } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
-
-import "../styles/Header.scss";
+import { useEffect, useState } from "react";
+import scrollSection from "../utils/scrollSection";
 
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const menu_list = [
     { id: "about-me", name: "About Me" },
     { id: "skills", name: "Skills" },
@@ -13,68 +13,56 @@ export default function Header() {
   ];
 
   useEffect(() => {
-    const nav = document.querySelector("#nav");
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 0) {
-        nav.classList.replace("navbar-not-scroll", "navbar-scroll");
-      } else {
-        nav.classList.replace("navbar-scroll", "navbar-not-scroll");
-      }
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
 
       // 스크롤 위치에 따른 메뉴 활성화
       const scrollPosition = window.scrollY;
       const sectionList = document.querySelectorAll("section");
       sectionList.forEach((section) => {
         const id = section.getAttribute("id");
+        const currentMenu = document.querySelector(`.nav-link[data-id="${id}"]`);
 
         if (scrollPosition >= section.offsetTop - 100 && scrollPosition < section.offsetTop + section.offsetHeight - 100) {
-          document.querySelectorAll(".navbar-nav a").forEach((a) => {
-            a.classList.remove("active");
+          document.querySelectorAll(".nav-link").forEach((button) => {
+            button.classList.remove("text-blue-700");
           });
-
-          document.querySelector(`a[data-id="${id}"]`).classList.add("active");
+          currentMenu?.classList.remove("text-gray-700");
+          currentMenu?.classList.add("text-blue-700");
         } else {
-          document.querySelector(`a[data-id="${id}"]`).classList.remove("active");
+          currentMenu?.classList.add("text-gray-700");
+          currentMenu?.classList.remove("text-blue-700");
         }
       });
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 스크롤 이동 함수
-  const handleClick = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    section.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <header className="header">
-      <Navbar id="nav" expand="lg" fixed="top" className="navbar-not-scroll">
-        <Container className="justify-content-between">
-          <Nav.Link
-            className="fw-bold fs-3 text-white-70 navbar-brand"
-            onClick={() => {
-              handleClick("wrap");
-            }}
-          >
-            포트폴리오
-          </Nav.Link>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll" className="justify-content-end">
-            <Nav>
-              {menu_list.map((menu, index) => {
-                return (
-                  <Nav.Item key={index} className="px-lg-3">
-                    <Nav.Link data-id={menu.id} className="fw-bold fs-5 text-white-70" onClick={() => handleClick(menu.id)}>
+    <header>
+      <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-lg" : "bg-transparent"}`}>
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <button onClick={() => scrollSection("main-visual")} className={`text-3xl font-bold transition-colors ${isScrolled ? "text-gray-700 hover:text-gray-900" : "text-gray-300 hover:text-white"}`}>
+              Portfolio
+            </button>
+
+            <div>
+              <ul className="flex space-x-8">
+                {menu_list.map((menu, index) => (
+                  <li key={index}>
+                    <button data-id={menu.id} onClick={() => scrollSection(menu.id)} className={`nav-link text-xl transition-colors ${isScrolled ? "text-gray-700 hover:text-blue-700" : "text-gray-300 hover:text-white"} `}>
                       {menu.name}
-                    </Nav.Link>
-                  </Nav.Item>
-                );
-              })}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
     </header>
   );
 }

@@ -1,225 +1,149 @@
-import "../styles/Skills.scss";
-
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import scrollSection from "../utils/scrollSection";
 
-export default function Skills({ handleClickLinkIcon }) {
+export default function Skills() {
   const skills = {
     frontEnd: [
       {
-        size: { lg: 4 },
-        name: "HTML5",
-        icon: "images/icons/front-end/html5.png",
+        name: "HTML5, CSS3, JavaScript",
+        icon: "images/icons/front-end/htmlcssjs.png",
       },
       {
-        size: { lg: 4 },
-        name: "CSS3",
-        icon: "images/icons/front-end/css3.png",
-      },
-      {
-        size: { lg: 4 },
-        name: "JavaScript",
-        icon: "images/icons/front-end/javascript.png",
-      },
-      {
-        size: { lg: 12 },
         name: "Bootstrap",
         icon: "images/icons/front-end/bootstrap.png",
       },
       {
-        size: { lg: 12 },
         name: "jQuery",
         icon: "images/icons/front-end/jquery.png",
       },
       {
-        size: { lg: 12 },
-        name: "Pug",
-        icon: "images/icons/front-end/pug.png",
-      },
-      {
-        size: { lg: 12 },
         name: "React",
         icon: "images/icons/front-end/react.png",
       },
       {
-        size: { lg: 12 },
         name: "Next.js",
         icon: "images/icons/front-end/nextjs.png",
       },
     ],
     backEnd: [
       {
-        size: { lg: 6 },
         name: "PHP",
         icon: "images/icons/back-end/php.png",
+        className: "max-w-[75%]",
       },
-      // {
-      //   size: { lg: 6 },
-      //   name: "JSP",
-      //   icon: "images/icons/back-end/jsp.png",
-      //   className: "mw-75",
-      // },
       {
-        size: { lg: 12 },
         name: "Node.js",
         icon: "images/icons/back-end/nodejs.png",
       },
       {
-        size: { lg: 12 },
         name: "Express.js",
         icon: "images/icons/back-end/expressjs.png",
       },
-      // {
-      //   size: { lg: 12 },
-      //   name: "Spring",
-      //   icon: "images/icons/back-end/spring.png",
-      // },
+      {
+        name: "Spring",
+        icon: "images/icons/back-end/spring.png",
+      },
     ],
     database: [
       {
-        size: { lg: 12 },
         name: "MySQL",
         icon: "images/icons/database/mysql.png",
+        className: "max-w-[75%]",
       },
       {
-        size: { lg: 12 },
         name: "MariaDB",
         icon: "images/icons/database/mariadb.png",
+        className: "max-w-[75%]",
       },
     ],
     versionControl: [
       {
-        size: { lg: 12 },
         name: "Git",
         icon: "images/icons/version-control/git.png",
-        className: "mw-75",
+        className: "max-w-[75%]",
       },
       {
-        size: { lg: 12 },
         name: "GitHub",
         icon: "images/icons/version-control/github.png",
-      },
-    ],
-    etc: [
-      {
-        size: { lg: 12 },
-        name: "Apache",
-        icon: "images/icons/etc/apache.png",
-      },
-      {
-        size: { lg: 12 },
-        name: "Amazon Web Services",
-        icon: "images/icons/etc/aws.png",
-      },
-      {
-        size: { lg: 12 },
-        name: "Visual Studio Code",
-        icon: "images/icons/etc/vscode.png",
       },
     ],
   };
 
   return (
-    <section id="skills">
-      <Container>
-        <h2 className="skills-title section-title text-white">
-          <FontAwesomeIcon icon={faLink} className="icon" onClick={() => handleClickLinkIcon("skills")} />
-          <span>SKILLS</span>
+    <section id="skills" className="flex justify-center items-center w-full min-h-screen py-28 bg-[#5a8100]">
+      <div className="container mx-auto px-6 flex flex-col justify-center items-center gap-12">
+        <h2 className="flex justify-center items-center text-center text-5xl font-black gap-4 text-white">
+          <FontAwesomeIcon icon={faLink} className="text-3xl cursor-pointer" onClick={() => scrollSection("skills")} />
+          <span className="border-b-2 border-gray-200 pb-1">SKILLS</span>
         </h2>
-        <div className="skills-content">
-          <Row>
-            <Col lg={4}>
-              <Card className="p-4 rounded-4 shadow">
-                <Card.Title className="border-bottom">
-                  <h3 className="text-primary fw-bold">Front-End</h3>
-                </Card.Title>
-                <Card.Body>
-                  <Row className="row-gap-4">
+        <div className="w-full">
+          <div className="grid grid-cols-3 gap-6">
+            <div className="col-span-1">
+              <div className="bg-white p-6 rounded-2xl shadow">
+                <div className="border-b">
+                  <h3 className="text-blue-600 font-bold text-2xl">Front-End</h3>
+                </div>
+                <div className="p-4">
+                  <div className="flex flex-col gap-y-6">
                     {skills.frontEnd.map((skill, index) => (
-                      <Col key={index} lg={skill.size.lg}>
-                        <img src={skill.icon} alt={skill.name + " 아이콘"} title={skill.name} className={"img-fluid " + (skill.className ? skill.className : "")} />
-                      </Col>
+                      <div key={index} className="flex justify-center">
+                        <img src={skill.icon} alt={`${skill.name} 아이콘`} title={skill.name} className={`w-full ${skill.className || ""}`} />
+                      </div>
                     ))}
-                  </Row>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col lg={4}>
-              <Row className="gap-3">
-                <Col lg={12}>
-                  <Card className="p-4 rounded-4 shadow">
-                    <Card.Title className="border-bottom">
-                      <h3 className="text-primary fw-bold">Back-End</h3>
-                    </Card.Title>
-                    <Card.Body>
-                      <Row className="row-gap-4 justify-content-center align-items-center">
-                        {skills.backEnd.map((skill, index) => (
-                          <Col key={index} lg={skill.size.lg} className="text-center">
-                            <img src={skill.icon} alt={skill.name + " 아이콘"} title={skill.name} className={"img-fluid " + (skill.className ? skill.className : "")} />
-                          </Col>
-                        ))}
-                      </Row>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col lg={12}>
-                  <Card className="p-4 rounded-4 shadow">
-                    <Card.Title className="border-bottom">
-                      <h3 className="text-primary fw-bold">Database</h3>
-                    </Card.Title>
-                    <Card.Body>
-                      <Row className="row-gap-4 justify-content-center align-items-center">
-                        {skills.database.map((skill, index) => (
-                          <Col key={index} lg={skill.size.lg}>
-                            <img src={skill.icon} alt={skill.name + " 아이콘"} title={skill.name} className={"img-fluid " + (skill.className ? skill.className : "")} />
-                          </Col>
-                        ))}
-                      </Row>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </Col>
-            <Col lg={4}>
-              <Row className="gap-3">
-                <Col lg={12}>
-                  <Card className="p-4 rounded-4 shadow">
-                    <Card.Title className="border-bottom">
-                      <h3 className="text-primary fw-bold">Version Control</h3>
-                    </Card.Title>
-                    <Card.Body>
-                      <Row className="row-gap-4 justify-content-center align-items-center">
-                        {skills.versionControl.map((skill, index) => (
-                          <Col key={index} lg={skill.size.lg}>
-                            <img src={skill.icon} alt={skill.name + " 아이콘"} title={skill.name} className={"img-fluid " + (skill.className ? skill.className : "")} />
-                          </Col>
-                        ))}
-                      </Row>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col lg={12}>
-                  <Card className="p-4 rounded-4 shadow">
-                    <Card.Title className="border-bottom">
-                      <h3 className="text-primary fw-bold">ETC</h3>
-                    </Card.Title>
-                    <Card.Body>
-                      <Row className="row-gap-4 justify-content-center align-items-center">
-                        {skills.etc.map((skill, index) => (
-                          <Col key={index} lg={skill.size.lg}>
-                            <img src={skill.icon} alt={skill.name + " 아이콘"} title={skill.name} className={"img-fluid " + (skill.className ? skill.className : "")} />
-                          </Col>
-                        ))}
-                      </Row>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-1 flex flex-col gap-4">
+              <div className="bg-white p-6 rounded-2xl shadow">
+                <div className="border-b">
+                  <h3 className="text-blue-600 font-bold text-2xl">Back-End</h3>
+                </div>
+                <div className="p-4">
+                  <div className="grid gap-y-6">
+                    {skills.backEnd.map((skill, index) => (
+                      <div key={index} className="flex justify-center">
+                        <img src={skill.icon} alt={`${skill.name} 아이콘`} title={skill.name} className={`w-full ${skill.className || ""}`} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-span-1 flex flex-col gap-4">
+              <div className="bg-white p-6 rounded-2xl shadow">
+                <div className="border-b">
+                  <h3 className="text-blue-600 font-bold text-2xl">Database</h3>
+                </div>
+                <div className="p-4">
+                  <div className="grid gap-y-6">
+                    {skills.database.map((skill, index) => (
+                      <div key={index} className="flex justify-center">
+                        <img src={skill.icon} alt={`${skill.name} 아이콘`} title={skill.name} className={`w-full ${skill.className || ""}`} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="bg-white p-6 rounded-2xl shadow">
+                <div className="border-b">
+                  <h3 className="text-blue-600 font-bold text-2xl">Version Control</h3>
+                </div>
+                <div className="p-4">
+                  <div className="grid gap-y-6">
+                    {skills.versionControl.map((skill, index) => (
+                      <div key={index} className="flex justify-center">
+                        <img src={skill.icon} alt={`${skill.name} 아이콘`} title={skill.name} className={`w-full ${skill.className || ""}`} />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

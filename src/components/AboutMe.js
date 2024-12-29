@@ -1,9 +1,6 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faEnvelope, faLink, faLocationDot, faPencil, faPhone, faUser } from "@fortawesome/free-solid-svg-icons";
-
-import "../styles/AboutMe.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
 
 export default function AboutMe({ handleClickLinkIcon }) {
   const about_me = [
@@ -42,39 +39,33 @@ export default function AboutMe({ handleClickLinkIcon }) {
   ];
 
   return (
-    <section id="about-me">
-      <Container>
-        <h2 className="about-me-title section-title">
-          <FontAwesomeIcon icon={faLink} className="icon" onClick={() => handleClickLinkIcon("about-me")} />
-          <span>ABOUT ME</span>
+    <section id="about-me" className="flex justify-center items-center w-full min-h-screen py-28">
+      <div className="container mx-auto px-6 flex flex-col justify-center items-center gap-12">
+        <h2 className="flex justify-center items-center font-noto text-center text-5xl font-black gap-4">
+          <FontAwesomeIcon icon={faLink} className="text-3xl cursor-pointer" onClick={() => handleClickLinkIcon("about-me")} />
+          <span className="border-b-2 border-gray-200 pb-1">ABOUT ME</span>
         </h2>
-        <div className="about-me-content">
-          <Row className="row-gap-5">
-            {about_me.map((item, index) => {
-              return (
-                <Col key={index} lg={4}>
-                  <AboutMeItem {...item} />
-                </Col>
-              );
-            })}
-          </Row>
+        <div className="grid grid-cols-3 gap-9">
+          {about_me.map((item, index) => (
+            <AboutMeItem key={index} {...item} />
+          ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }
 
 function AboutMeItem({ type, icon, category, content }) {
   return (
-    <div className="d-flex column-gap-4">
-      <div className="about-me-icon d-flex align-items-center">
+    <div className="flex gap-4">
+      <div className="text-3xl flex items-center">
         <FontAwesomeIcon icon={icon} />
       </div>
-      <div className="about-me-text">
-        <h5 className="fw-bold">{category}</h5>
-        <span className="word-break-keep-all">
+      <div>
+        <h5 className="font-bold mb-1">{category}</h5>
+        <span className="break-keep">
           {type ? (
-            <a href={`${type}:${content}`} className={`text-decoration-none text-black ${type}`}>
+            <a href={`${type}:${content}`} className="no-underline text-black hover:text-blue-700 transition-colors">
               {content}
             </a>
           ) : (

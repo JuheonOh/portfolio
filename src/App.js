@@ -1,30 +1,25 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/Globals.scss";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "./styles/Globals.scss";
+import "./styles/global.css";
 
+import AboutMe from "./components/AboutMe";
+import Archiving from "./components/Archiving";
+import Career from "./components/Career";
 import Header from "./components/Header";
 import MainVisual from "./components/MainVisual";
-import AboutMe from "./components/AboutMe";
-import Skills from "./components/Skills";
-import Archiving from "./components/Archiving";
 import Projects from "./components/Projects";
-import Career from "./components/Career";
+import Skills from "./components/Skills";
 
 export default function App() {
-  // 스크롤 이동 함수
-  const handleClickLinkIcon = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    section.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <>
-      <Header handleClickLinkIcon={handleClickLinkIcon} />
-      <MainVisual handleClickLinkIcon={handleClickLinkIcon} />
-      <AboutMe handleClickLinkIcon={handleClickLinkIcon} />
-      <Skills handleClickLinkIcon={handleClickLinkIcon} />
-      <Archiving handleClickLinkIcon={handleClickLinkIcon} />
-      <Projects handleClickLinkIcon={handleClickLinkIcon} />
-      <Career handleClickLinkIcon={handleClickLinkIcon} />
+      <Header />
+      <MainVisual />
+      <AboutMe />
+      <Skills />
+      <Archiving />
+      <Projects />
+      <Career />
     </>
   );
 }
