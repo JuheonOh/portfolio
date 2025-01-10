@@ -4,68 +4,102 @@ import scrollSection from "../utils/scrollSection";
 
 export default function Skills() {
   const skills = {
-    frontEnd: [
+    frontend: [
       {
-        name: "HTML5, CSS3, JavaScript",
-        icon: "images/icons/front-end/htmlcssjs.png",
+        name: "HTML5",
+        bgColor: "#E34F26",
+        textColor: "#ffffff",
+      },
+      {
+        name: "CSS3",
+        bgColor: "#1572B6",
+        textColor: "#ffffff",
       },
       {
         name: "Bootstrap",
-        icon: "images/icons/front-end/bootstrap.png",
+        bgColor: "#7952B3",
+        textColor: "#ffffff",
+      },
+      {
+        name: "Tailwind CSS",
+        bgColor: "#06B6D4",
+        textColor: "#ffffff",
+      },
+      {
+        name: "JavaScript",
+        bgColor: "#F7DF1E",
+        textColor: "#000000",
       },
       {
         name: "jQuery",
-        icon: "images/icons/front-end/jquery.png",
+        bgColor: "#0769AD",
+        textColor: "#ffffff",
       },
       {
         name: "React",
-        icon: "images/icons/front-end/react.png",
+        bgColor: "#61DAFB",
+        textColor: "#000000",
       },
       {
         name: "Next.js",
-        icon: "images/icons/front-end/nextjs.png",
+        bgColor: "#000000",
+        textColor: "#ffffff",
       },
     ],
-    backEnd: [
+    backend: [
       {
-        name: "PHP",
-        icon: "images/icons/back-end/php.png",
-        className: "max-w-[75%]",
+        name: "Spring Boot",
+        bgColor: "#6DB33F",
+        textColor: "#ffffff",
       },
       {
         name: "Node.js",
-        icon: "images/icons/back-end/nodejs.png",
+        bgColor: "#5FA04E",
+        textColor: "#ffffff",
       },
       {
         name: "Express.js",
-        icon: "images/icons/back-end/expressjs.png",
+        bgColor: "#000000",
+        textColor: "#ffffff",
       },
       {
-        name: "Spring",
-        icon: "images/icons/back-end/spring.png",
+        name: "PHP",
+        bgColor: "#777BB4",
+        textColor: "#ffffff",
       },
     ],
     database: [
       {
         name: "MySQL",
-        icon: "images/icons/database/mysql.png",
-        className: "max-w-[75%]",
+        bgColor: "#4479A1",
+        textColor: "#ffffff",
       },
       {
         name: "MariaDB",
-        icon: "images/icons/database/mariadb.png",
-        className: "max-w-[75%]",
+        bgColor: "#003545",
+        textColor: "#ffffff",
+      },
+      {
+        name: "PostgreSQL",
+        bgColor: "#4169E1",
+        textColor: "#ffffff",
+      },
+      {
+        name: "Oracle",
+        bgColor: "#F80000",
+        textColor: "#ffffff",
       },
     ],
     versionControl: [
       {
         name: "Git",
-        icon: "images/icons/version-control/git.png",
-        className: "max-w-[75%]",
+        bgColor: "#f05032",
+        textColor: "#ffffff",
       },
       {
         name: "GitHub",
-        icon: "images/icons/version-control/github.png",
+        bgColor: "#181717",
+        textColor: "#ffffff",
       },
     ],
   };
@@ -77,68 +111,61 @@ export default function Skills() {
           <FontAwesomeIcon icon={faLink} className="text-3xl cursor-pointer" onClick={() => scrollSection("skills")} />
           <span className="border-b-2 border-gray-200 pb-1">SKILLS</span>
         </h2>
-        <div className="w-full">
-          <div className="grid grid-cols-3 gap-6">
-            <div className="col-span-1">
-              <div className="bg-white p-6 rounded-2xl shadow">
-                <div className="border-b">
-                  <h3 className="text-blue-600 font-bold text-2xl">Front-End</h3>
-                </div>
-                <div className="p-4">
-                  <div className="flex flex-col gap-y-6">
-                    {skills.frontEnd.map((skill, index) => (
-                      <div key={index} className="flex justify-center">
-                        <img src={skill.icon} alt={`${skill.name} 아이콘`} title={skill.name} className={`w-full ${skill.className || ""}`} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+        <div className="w-full flex flex-col gap-6">
+          <div className="flex flex-wrap">
+            <div className="bg-white p-6 rounded-2xl shadow">
+              <div className="border-b mb-4">
+                <h3 className="text-blue-600 font-bold text-2xl">Front-End</h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {skills.frontend.map((skill, index) => (
+                  <span key={index} className={`text-white px-2 py-1 rounded-md`} style={{ backgroundColor: skill.bgColor, color: skill.textColor }}>
+                    {skill.name}
+                  </span>
+                ))}
               </div>
             </div>
-            <div className="col-span-1 flex flex-col gap-4">
-              <div className="bg-white p-6 rounded-2xl shadow">
-                <div className="border-b">
-                  <h3 className="text-blue-600 font-bold text-2xl">Back-End</h3>
-                </div>
-                <div className="p-4">
-                  <div className="grid gap-y-6">
-                    {skills.backEnd.map((skill, index) => (
-                      <div key={index} className="flex justify-center">
-                        <img src={skill.icon} alt={`${skill.name} 아이콘`} title={skill.name} className={`w-full ${skill.className || ""}`} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+          </div>
+
+          <div className="flex flex-wrap gap-x-4">
+            <div className="bg-white p-6 rounded-2xl shadow">
+              <div className="border-b mb-4">
+                <h3 className="text-blue-600 font-bold text-2xl">Back-End</h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {skills.backend.map((skill, index) => (
+                  <span key={index} className={`text-white px-2 py-1 rounded-md`} style={{ backgroundColor: skill.bgColor, color: skill.textColor }}>
+                    {skill.name}
+                  </span>
+                ))}
               </div>
             </div>
-            <div className="col-span-1 flex flex-col gap-4">
-              <div className="bg-white p-6 rounded-2xl shadow">
-                <div className="border-b">
-                  <h3 className="text-blue-600 font-bold text-2xl">Database</h3>
-                </div>
-                <div className="p-4">
-                  <div className="grid gap-y-6">
-                    {skills.database.map((skill, index) => (
-                      <div key={index} className="flex justify-center">
-                        <img src={skill.icon} alt={`${skill.name} 아이콘`} title={skill.name} className={`w-full ${skill.className || ""}`} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow">
+              <div className="border-b mb-4">
+                <h3 className="text-blue-600 font-bold text-2xl">Database</h3>
               </div>
-              <div className="bg-white p-6 rounded-2xl shadow">
-                <div className="border-b">
-                  <h3 className="text-blue-600 font-bold text-2xl">Version Control</h3>
-                </div>
-                <div className="p-4">
-                  <div className="grid gap-y-6">
-                    {skills.versionControl.map((skill, index) => (
-                      <div key={index} className="flex justify-center">
-                        <img src={skill.icon} alt={`${skill.name} 아이콘`} title={skill.name} className={`w-full ${skill.className || ""}`} />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="flex flex-wrap gap-3">
+                {skills.database.map((skill, index) => (
+                  <span key={index} className={`text-white px-2 py-1 rounded-md`} style={{ backgroundColor: skill.bgColor, color: skill.textColor }}>
+                    {skill.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap">
+            <div className="bg-white p-6 rounded-2xl shadow">
+              <div className="border-b mb-4">
+                <h3 className="text-blue-600 font-bold text-2xl">Version Control</h3>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {skills.versionControl.map((skill, index) => (
+                  <span key={index} className={`text-white px-2 py-1 rounded-md`} style={{ backgroundColor: skill.bgColor, color: skill.textColor }}>
+                    {skill.name}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
