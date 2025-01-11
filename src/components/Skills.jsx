@@ -105,32 +105,31 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="flex justify-center items-center w-full min-h-screen py-28 bg-[#5a8100]">
-      <div className="container mx-auto px-6 flex flex-col justify-center items-center gap-12">
-        <h2 className="flex justify-center items-center text-center text-5xl font-black gap-4 text-white">
-          <FontAwesomeIcon icon={faLink} className="text-3xl cursor-pointer" onClick={() => scrollSection("skills")} />
-          <span className="border-b-2 border-gray-200 pb-1">SKILLS</span>
-        </h2>
-        <div className="w-full flex flex-col gap-6">
-          <div className="flex flex-wrap">
-            <div className="bg-white p-6 rounded-2xl shadow">
+    <section id="skills" className="flex flex-col gap-y-12 justify-center items-center min-h-screen py-28 bg-[#5a8100]">
+      <h2 className="flex justify-center items-center text-5xl font-black gap-x-4 text-white">
+        <FontAwesomeIcon icon={faLink} className="text-3xl cursor-pointer" onClick={() => scrollSection("skills")} />
+        <span className="border-b-2 border-gray-200 pb-1">SKILLS</span>
+      </h2>
+      <div className="flex flex-wrap justify-center">
+        <div className="bg-white p-6 rounded-2xl shadow">
+          <div className="flex flex-col gap-y-10">
+            <div>
               <div className="border-b mb-4">
-                <h3 className="text-blue-600 font-bold text-2xl">Front-End</h3>
+                <h3 className="text-gray-800 font-bold text-2xl">Front-End</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {skills.frontend.map((skill, index) => (
                   <span key={index} className={`text-white px-2 py-1 rounded-md`} style={{ backgroundColor: skill.bgColor, color: skill.textColor }}>
+                    {skill.icon}
                     {skill.name}
                   </span>
                 ))}
               </div>
             </div>
-          </div>
 
-          <div className="flex flex-wrap gap-x-4">
-            <div className="bg-white p-6 rounded-2xl shadow">
+            <div>
               <div className="border-b mb-4">
-                <h3 className="text-blue-600 font-bold text-2xl">Back-End</h3>
+                <h3 className="text-gray-800 font-bold text-2xl">Back-End</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {skills.backend.map((skill, index) => (
@@ -141,9 +140,9 @@ export default function Skills() {
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow">
+            <div>
               <div className="border-b mb-4">
-                <h3 className="text-blue-600 font-bold text-2xl">Database</h3>
+                <h3 className="text-gray-800 font-bold text-2xl">Database</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {skills.database.map((skill, index) => (
@@ -153,12 +152,10 @@ export default function Skills() {
                 ))}
               </div>
             </div>
-          </div>
 
-          <div className="flex flex-wrap">
-            <div className="bg-white p-6 rounded-2xl shadow">
+            <div>
               <div className="border-b mb-4">
-                <h3 className="text-blue-600 font-bold text-2xl">Version Control</h3>
+                <h3 className="text-gray-800 font-bold text-2xl">Version Control</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {skills.versionControl.map((skill, index) => (
