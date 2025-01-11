@@ -46,6 +46,6 @@ jobs:
         with:
           # dist 디렉터리 업로드
           path: './dist'
-      - name: Deploy to GitHub Pages
+      - name: Portfolio Skills v2 Deploy
         id: deployment
         uses: actions/deploy-pages@v4
