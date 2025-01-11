@@ -4,7 +4,7 @@ import tailwindcss from "tailwindcss";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/portfolio/v2/",
+  base: "/portfolio/",
   css: {
     postcss: {
       plugins: [tailwindcss],
