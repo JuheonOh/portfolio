@@ -9,7 +9,7 @@ export default function Header() {
     { id: "skills", name: "Skills" },
     { id: "archiving", name: "Archiving" },
     { id: "projects", name: "Projects" },
-    { id: "career", name: "Career" },
+    { id: "awards", name: "Awards" },
   ];
 
   useEffect(() => {

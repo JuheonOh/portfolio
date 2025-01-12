@@ -28,13 +28,13 @@ export default function Awards() {
   ];
 
   return (
-    <section id="career" className="relative w-full min-h-screen py-28">
+    <section id="awards" className="relative w-full min-h-screen py-28">
       <div className="absolute inset-0 bg-cover bg-no-repeat bg-top isolate -z-10" style={{ backgroundImage: "url(images/career/career_bg.jpg)" }}></div>
       <div className="absolute inset-0 bg-black opacity-50 -z-10"></div>
       <div className="container mx-auto px-6">
         <h2 className="flex justify-center items-center text-center text-5xl font-black gap-4 text-white mb-12">
-          <FontAwesomeIcon icon={faLink} className="text-3xl cursor-pointer" onClick={() => scrollSection("career")} />
-          <span className="border-b-2 border-gray-200 pb-1">CAREER</span>
+          <FontAwesomeIcon icon={faLink} className="text-3xl cursor-pointer" onClick={() => scrollSection("awards")} />
+          <span className="border-b-2 border-gray-200 pb-1">AWARDS</span>
         </h2>
 
         <div className="space-y-8">
