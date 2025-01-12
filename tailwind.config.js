@@ -6,5 +6,5 @@ module.exports = {
       colors: {},
     },
   },
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: [],
 };
