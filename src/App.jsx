@@ -2,7 +2,7 @@ import "./styles/global.css";
 
 import AboutMe from "./components/AboutMe";
 import Archiving from "./components/Archiving";
-import Career from "./components/Career";
+import Awards from "./components/Awards";
 import Header from "./components/Header";
 import MainVisual from "./components/MainVisual";
 import Projects from "./components/Projects";
@@ -17,7 +17,7 @@ export default function App() {
       <Skills />
       <Archiving />
       <Projects />
-      <Career />
+      <Awards />
     </>
   );
 }

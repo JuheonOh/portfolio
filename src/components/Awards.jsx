@@ -2,7 +2,7 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import scrollSection from "../utils/scrollSection";
 
-export default function Career() {
+export default function Awards() {
   const infoArr = [
     {
       imageSrc: "2016_national.jpg",
