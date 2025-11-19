@@ -17,7 +17,7 @@ export default function AboutMe({ handleClickLinkIcon }) {
     {
       icon: faLocationDot,
       category: "주소지",
-      content: "인천광역시 미추홀구",
+      content: "광주광역시 동구",
     },
     {
       icon: faPhone,
