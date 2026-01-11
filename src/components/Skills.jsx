@@ -1,12 +1,11 @@
 import {
-  faLink,
   faCode,
   faServer,
   faDatabase,
   faCodeBranch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import scrollSection from "../utils/scrollSection";
+import SectionHeader from "./SectionHeader";
 
 export default function Skills() {
   const skillCategories = [
@@ -71,16 +70,7 @@ export default function Skills() {
     >
       <div className="container mx-auto px-6">
         {/* 헤더 */}
-        <div className="mb-16 text-center">
-          <h2 className="flex items-center justify-center gap-3 text-4xl font-black text-white md:text-5xl">
-            <FontAwesomeIcon
-              icon={faLink}
-              className="cursor-pointer text-3xl text-yellow-400 transition-colors hover:text-yellow-300"
-              onClick={() => scrollSection("skills")}
-            />
-            <span className="border-b-4 border-yellow-400 pb-2">SKILLS</span>
-          </h2>
-        </div>
+        <SectionHeader title="SKILLS" sectionId="skills" />
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {skillCategories.map((category, index) => (

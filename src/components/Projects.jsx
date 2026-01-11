@@ -1,63 +1,87 @@
-import { faChevronLeft, faChevronRight, faLink } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import {
+  faChevronLeft,
+  faChevronRight,
+  faLink,
+  faCheckCircle,
+  faExpand,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination, Keyboard } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import scrollSection from "../utils/scrollSection";
+
+// 전역 모달 상태 관리를 위한 커스텀 훅
+import { useModal } from "../context/ModalContext";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
+// 섹션 헤더 컴포넌트
+import SectionHeader from "./SectionHeader";
+
+// 기본 경로 가져오기 (배포 시 경로 문제 해결용)
+const BASE_URL = import.meta.env.BASE_URL;
+
 export default function Projects() {
+  const { openModal } = useModal();
+
+  // 이미지 클릭 시 모달을 띄우는 핸들러
+  // 클릭된 프로젝트의 전체 이미지 배열과 클릭한 이미지의 인덱스를 전달받음
+  const handleImageClick = (images, initialIndex) => {
+    openModal(
+      <ImageGalleryContent images={images} initialIndex={initialIndex} />,
+    );
+  };
+
+  // --- 프로젝트 데이터 정의 ---
   const auction = {
-    title: "중고 경매 플랫폼",
+    title: "실시간 중고 경매 플랫폼",
     date: "2024. 09",
     collaboration: "개인 프로젝트",
     swiperClassName: "swiper-auction",
-    swiperImageFolder: "auction",
+    swiperImageFolder: "auction", // 이미지를 불러올 폴더명
     projectInfo: {
-      description: (
-        <>
-          이베이, 옥션을 참고하여 만든 <span className="font-bold">실시간 중고 경매 플랫폼</span>입니다.
-        </>
-      ),
-      feature: "실시간 입찰 시스템, 즉시 구매, 경매 생성 및 관리, 관심 경매 등록, 실시간 알림, 입찰 내역 조회",
+      description:
+        "이베이, 옥션을 참고하여 만든 실시간 중고 경매 플랫폼입니다.",
+      feature:
+        "실시간 입찰(WebSocket), SSE 알림, 경매 생성/관리, 입찰 내역 조회",
       githubUrl: "https://github.com/JuheonOh/realtime-auction-spring",
+      paperUrl: `${BASE_URL}papers/real-time_auction_system_paper.pdf`,
       usingSkills: [
         {
           name: "Frontend",
-          description: "React, Redux Toolkit, TailwindCSS, Axios, Event Source, WebSocket",
+          tags: ["React", "Redux Toolkit", "TailwindCSS", "Axios", "WebSocket"],
         },
         {
           name: "Backend",
-          description: "Spring Boot, Spring Security, JWT, JPA, WebSocket",
-        },
-        {
-          name: "Database",
-          description: "MariaDB, Redis",
+          tags: ["Spring Boot", "Spring Security", "JPA", "Redis", "MariaDB"],
         },
       ],
     },
   };
 
   const electrip = {
-    title: "Electrip",
+    title: "Electrip (전기차 대여)",
     date: "2023. 03",
     collaboration: "개인 프로젝트",
     swiperClassName: "swiper-electrip",
     swiperImageFolder: "electrip",
     projectInfo: {
-      description: (
-        <>
-          그린카, 롯데렌터카를 참고하여 만든 <span className="font-bold">가상의 전기 자동차 대여 웹사이트</span>입니다.
-        </>
-      ),
-      feature: "현재 위치 기반 주변 전기차 대여소 정보 제공, 대여 날짜, 장소, 차량 선택 후 예약하기, 예약 관리, 차량 관리",
+      description:
+        "그린카를 모티브로 한 가상의 전기 자동차 대여 예약 서비스입니다.",
+      feature: "위치 기반 대여소 찾기, 날짜/차량 선택 예약, 관리자 대시보드",
       githubUrl: "https://github.com/JuheonOh/electrip",
+      paperUrl: `${BASE_URL}papers/vehicle_renter_system_paper.pdf`,
       usingSkills: [
-        { name: "Frontend", description: "Next.js, Bootstrap, Swiper, Axios, Redux" },
-        { name: "Backend", description: "Next.js, Express.js" },
-        { name: "Database", description: "PostgreSQL" },
+        {
+          name: "Frontend",
+          tags: ["Next.js", "Bootstrap", "Swiper", "Redux"],
+        },
+        {
+          name: "Backend",
+          tags: ["Next.js API", "Express.js", "PostgreSQL"],
+        },
       ],
     },
   };
@@ -69,57 +93,57 @@ export default function Projects() {
     swiperClassName: "swiper-ohbike",
     swiperImageFolder: "ohbike",
     projectInfo: {
-      description: (
-        <>
-          바이크옥션, FC-MOTO 쇼핑몰을 참고하여 만든 <span className="font-bold">바이크 용품 쇼핑몰 웹사이트</span>입니다.
-        </>
-      ),
-      feature: "상품 카테고리별 목록 조회, 상품 옵션, 수량, 상품 구매, 장바구니, 관리자 대시보드, 상품 관리, 주문 관리",
+      description: "바이크 용품 전문 쇼핑몰 웹사이트입니다.",
+      feature: "카테고리별 상품 조회, 장바구니/주문, 관리자 상품 관리",
       githubUrl: "https://github.com/JuheonOh/bike-gear-shoppingmall-express",
       usingSkills: [
-        { name: "Frontend", description: "Pug, jQuery, Ajax, Slick, CKEditor" },
-        { name: "Backend", description: "Express.js" },
-        { name: "Database", description: "MariaDB" },
+        { name: "Frontend", tags: ["Pug", "jQuery", "Ajax", "Slick"] },
+        { name: "Backend", tags: ["Express.js", "MariaDB"] },
       ],
     },
   };
 
   const bbs = {
-    title: "바이크 중고거래 게시판",
+    title: "바이크 중고거래 장터",
     date: "2019. 09",
     collaboration: "개인 프로젝트",
     swiperClassName: "swiper-bbs",
     swiperImageFolder: "bbs",
     projectInfo: {
-      description: (
-        <>
-          네이버 카페, 파쏘(Passo)를 참고하여 만든 <span className="font-bold">바이크 판매 장터 게시판 웹사이트</span>입니다.
-        </>
-      ),
-      feature: "무한 스크롤 게시글 추가 로딩, 이미지 업로드, 업로드할 이미지 미리보기",
+      description: "커뮤니티 카페 형식을 참고한 중고 거래 게시판입니다.",
+      feature: "무한 스크롤, 다중 이미지 업로드 및 미리보기, 게시글 CRUD",
       githubUrl: "https://github.com/JuheonOh/bbs-spring",
       usingSkills: [
-        { name: "Frontend", description: "Bootstrap, jQuery, Ajax" },
-        { name: "Backend", description: "Spring" },
-        { name: "Database", description: "MariaDB" },
+        {
+          name: "Stack",
+          tags: ["Spring Legacy", "MariaDB", "Bootstrap", "jQuery"],
+        },
       ],
     },
   };
 
-  const projects = [auction, electrip, ohbike, bbs];
+  // 화면에 렌더링할 프로젝트 목록 배열
+  const projects = [auction, electrip, ohbike];
 
   return (
-    <section id="projects" className="w-full min-h-screen py-28 bg-[#00897b]">
+    <section
+      id="projects"
+      className="min-h-screen w-full bg-slate-950 py-20 text-white lg:py-28"
+    >
       <div className="container mx-auto px-6">
-        <h2 className="flex justify-center items-center text-center text-5xl font-black gap-4 text-white mb-12">
-          <FontAwesomeIcon icon={faLink} className="text-3xl cursor-pointer" onClick={() => scrollSection("projects")} />
-          <span className="border-b-2 border-gray-200 pb-1">PROJECTS</span>
-        </h2>
+        {/* 공통 섹션 헤더 컴포넌트 */}
+        <SectionHeader title="PROJECTS" sectionId="projects" />
 
-        <div className="flex flex-col gap-4">
+        {/* 프로젝트 카드 리스트 영역 */}
+        <div className="flex flex-col gap-16">
           {projects.map((project, index) => (
-            <div key={index} className="w-full">
-              {ProjectCard(project)}
+            <div
+              key={index}
+              className="animate-fade-up"
+              style={{ animationDelay: `${index * 0.1}s` }} // 순차적 등장을 위한 딜레이 설정
+            >
+              {/* 각 프로젝트 데이터를 카드 컴포넌트에 전달 */}
+              {ProjectCard({ ...project, onImageClick: handleImageClick })}
             </div>
           ))}
         </div>
@@ -128,64 +152,135 @@ export default function Projects() {
   );
 }
 
+// --- 개별 프로젝트 카드 ---
 function ProjectCard(param) {
-  const { title, date, collaboration, swiperClassName, swiperImageFolder, projectInfo } = param;
+  const {
+    title,
+    date,
+    collaboration,
+    swiperClassName,
+    swiperImageFolder,
+    projectInfo,
+    onImageClick,
+  } = param;
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-lg min-h-[500px]">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold">{title}</h2>
-        <p className="text-sm">
-          {date} ({collaboration})
-        </p>
+    // 카드 전체 컨테이너
+    <div className="group flex flex-col items-stretch gap-8 rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl transition-all duration-300 hover:border-slate-700 md:p-8 lg:flex-row lg:gap-12">
+      {/* 왼쪽 이미지 슬라이더 영역 */}
+      <div className="w-full flex-shrink-0 lg:w-1/2">
+        <div className="relative h-full overflow-hidden rounded-xl border border-slate-800 bg-slate-950 shadow-inner">
+          <SlideAnimation
+            swiperClassName={swiperClassName}
+            swiperImageFolder={swiperImageFolder}
+            onImageClick={onImageClick}
+          />
+        </div>
       </div>
-      <div className="flex gap-8">
-        <div className="w-[400px] flex-shrink-0">
-          <SlideAnimation swiperClassName={swiperClassName} swiperImageFolder={swiperImageFolder} />
+
+      {/* 오른쪽 프로젝트 상세 정보 영역 */}
+      <div className="flex w-full flex-col gap-6 lg:w-1/2">
+        {/* 제목 및 날짜 */}
+        <div className="border-b border-slate-800 pb-4">
+          <div className="mb-2 flex items-center justify-between">
+            <h3 className="text-2xl font-bold text-white transition-colors group-hover:text-yellow-400 md:text-3xl">
+              {title}
+            </h3>
+            <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-bold text-slate-400">
+              {collaboration}
+            </span>
+          </div>
+          <p className="font-medium text-slate-500">{date}</p>
         </div>
 
-        <div className="flex flex-col gap-y-4">
-          <p>{projectInfo.description}</p>
-          <hr className="border-gray-200" />
-          <div className="flex">
-            <p className="w-1/4 font-bold">주요 기능</p>
-            <p className="w-3/4">{projectInfo.feature}</p>
-          </div>
-          <div className="flex">
-            <p className="w-1/4 font-bold">Github</p>
-            <p className="w-3/4">
-              <a href={projectInfo.githubUrl} className="text-blue-600 hover:underline" title={title} target="_blank" rel="noopener noreferrer">
-                {projectInfo.githubUrl.replace("https://", "")}
-              </a>
-            </p>
-          </div>
+        {/* 프로젝트 설명 */}
+        <p className="text-lg leading-relaxed text-slate-300">
+          {projectInfo.description}
+        </p>
+
+        {/* 주요 기능 설명 */}
+        <div>
+          <h4 className="mb-2 flex items-center gap-2 font-bold text-white">
+            <FontAwesomeIcon
+              icon={faCheckCircle}
+              className="text-sm text-yellow-400"
+            />
+            주요 기능
+          </h4>
+          <p className="rounded-lg bg-slate-800/50 p-3 text-sm leading-relaxed text-slate-400">
+            {projectInfo.feature}
+          </p>
+        </div>
+
+        {/* 기술 스택 */}
+        <div className="flex-grow">
           {projectInfo.usingSkills?.map((skill, index) => (
-            <div key={index} className="flex">
-              <p className="w-1/4 font-bold">{skill.name}</p>
-              <p className="w-3/4">{skill.description}</p>
+            <div key={index} className="mb-3 last:mb-0">
+              <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-slate-500">
+                {skill.name}
+              </span>
+              <div className="flex flex-wrap gap-2">
+                {skill.tags.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="rounded-md border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-medium text-slate-200 transition-colors hover:bg-slate-700"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
+        </div>
+
+        {/* 하단 링크 버튼들 */}
+        <div className="mt-auto pt-4">
+          <a
+            href={projectInfo.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:bg-yellow-400 hover:shadow-yellow-400/20"
+          >
+            <FontAwesomeIcon icon={faGithub} className="text-xl" />
+            <span>GitHub Repository</span>
+          </a>
+
+          {/* 논문 링크가 존재할 경우에만 렌더링 */}
+          {projectInfo.paperUrl && (
+            <a
+              href={projectInfo.paperUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-4 inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:bg-yellow-400 hover:shadow-yellow-400/20"
+            >
+              <FontAwesomeIcon icon={faLink} className="text-xl" />
+              <span>관련 논문 보기</span>
+            </a>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-function SlideAnimation(param) {
-  const { swiperClassName, swiperImageFolder } = param;
+// --- 카드 내부의 이미지 슬라이더 ---
+function SlideAnimation({ swiperClassName, swiperImageFolder, onImageClick }) {
   const [images, setImages] = useState([]);
 
+  // 특정 폴더의 이미지를 동적으로 불러오기
   useEffect(() => {
     const loadImages = async () => {
       try {
-        const imageFiles = import.meta.glob(`../../public/images/projects/**/*.{png,jpg,jpeg,gif}`); // 개발 환경 기준
+        const imageFiles = import.meta.glob(
+          `../../public/images/projects/**/*.{png,jpg,jpeg,gif}`,
+        );
+        // 파일 경로에서 필요한 부분만 추출하여 URL 배열 생성
         const imageUrls = Object.keys(imageFiles)
           .filter((path) => path.includes(swiperImageFolder))
-          .map((path) => path.replace("../../public/", "")); // 빌드 후 실제 경로
-
+          .map((path) => path.replace("../../public/", ""));
         setImages(imageUrls);
       } catch (error) {
-        console.error("이미지 로딩 중 오류 발생: ", error);
+        console.error("이미지 로딩 오류", error);
       }
     };
 
@@ -193,9 +288,14 @@ function SlideAnimation(param) {
   }, [swiperImageFolder]);
 
   return (
-    <div className="w-full relative">
+    <div className="group/swiper relative h-full w-full">
+      {/* 호버 시 나타나는 전체화면 아이콘 */}
+      <div className="pointer-events-none absolute right-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity group-hover/swiper:opacity-100">
+        <FontAwesomeIcon icon={faExpand} className="text-sm" />
+      </div>
+
       <Swiper
-        className={`${swiperClassName}`}
+        className={`${swiperClassName} h-full bg-slate-950`}
         modules={[Navigation, Pagination]}
         navigation={{
           nextEl: `.${swiperClassName}-next`,
@@ -204,24 +304,103 @@ function SlideAnimation(param) {
         pagination={{
           clickable: true,
           el: `.${swiperClassName}-pagination`,
-          bulletClass: "swiper-pagination-bullet !bg-emerald-700",
+          bulletClass:
+            "inline-block w-2 h-2 bg-white/50 rounded-full mx-1 cursor-pointer transition-all hover:bg-white",
+          bulletActiveClass: "!bg-yellow-400 !w-4",
         }}
-        wrapperClass="items-center"
+        loop={true}
       >
         {images.map((image, index) => (
-          <SwiperSlide key={index}>
-            <img src={image} alt={`슬라이드 ${index + 1}`} className="max-h-[500px] justify-self-center" />
+          <SwiperSlide
+            key={index}
+            className="relative cursor-pointer overflow-hidden bg-slate-950"
+            // 이미지 클릭 시 모달 오픈 함수 호출
+            onClick={() => onImageClick(images, index)}
+          >
+            {/* 배경에 블러 이미지 */}
+            <div
+              className="absolute inset-0 scale-110 bg-cover bg-center opacity-30 blur-xl transition-all duration-500"
+              style={{ backgroundImage: `url(${image})` }}
+            />
+            {/* 실제 보여지는 메인 이미지 */}
+            <img
+              src={image}
+              alt={`Project Slide ${index}`}
+              className="relative z-10 h-full w-full object-contain pb-7 shadow-lg"
+            />
           </SwiperSlide>
         ))}
 
-        <div className={`${swiperClassName}-pagination flex justify-center`}></div>
+        {/* 커스텀 좌우 화살표 */}
+        <button
+          className={`${swiperClassName}-prev absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity hover:bg-yellow-400 hover:text-black group-hover/swiper:opacity-100`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        <button
+          className={`${swiperClassName}-next absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity hover:bg-yellow-400 hover:text-black group-hover/swiper:opacity-100`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
 
-        <button className={`${swiperClassName}-prev absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black/20 text-white p-2 hover:bg-black/50`}>
-          <FontAwesomeIcon icon={faChevronLeft} className="text-2xl" />
+        {/* 커스텀 페이지네이션 */}
+        <div
+          className={`${swiperClassName}-pagination absolute bottom-4 left-0 z-20 flex w-full justify-center gap-1`}
+        ></div>
+      </Swiper>
+    </div>
+  );
+}
+
+// --- 모달 내부 콘텐츠 (큰 이미지 갤러리) ---
+function ImageGalleryContent({ images, initialIndex }) {
+  return (
+    <div className="h-[85vh] w-full p-2 md:p-4">
+      <Swiper
+        initialSlide={initialIndex} // 클릭한 이미지부터 시작
+        modules={[Navigation, Pagination, Keyboard]}
+        keyboard={{ enabled: true }} // 키보드 방향키 사용 가능
+        navigation={{
+          nextEl: ".modal-next",
+          prevEl: ".modal-prev",
+        }}
+        pagination={{
+          clickable: true,
+          el: `.modal-pagination`,
+          bulletClass:
+            "inline-block w-2 h-2 bg-white/50 rounded-full mx-1 cursor-pointer transition-all hover:bg-white",
+          bulletActiveClass: "!bg-yellow-400 !w-4",
+        }}
+        className="h-full w-full"
+      >
+        {images.map((image, index) => (
+          <SwiperSlide
+            key={index}
+            // - !flex와 justify-center로 이미지를 정중앙에 배치
+            className="!flex h-full w-full items-center justify-center p-10"
+          >
+            <img
+              src={image}
+              alt={`Modal Slide ${index}`}
+              className="mx-auto max-h-full max-w-full"
+            />
+          </SwiperSlide>
+        ))}
+
+        {/* 모달 전용 커스텀 버튼들 */}
+        <button className="flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-0 transition-opacity hover:bg-yellow-400 hover:text-black group-hover/swiper:opacity-100">
+          <FontAwesomeIcon icon={faChevronLeft} />
         </button>
-        <button className={`${swiperClassName}-next absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/20 text-white p-2 hover:bg-black/50`}>
-          <FontAwesomeIcon icon={faChevronRight} className="text-2xl" />
+        <button className="modal-prev absolute left-2 top-1/2 z-50 -translate-y-1/2 text-4xl text-white/50 transition-colors hover:text-white">
+          <FontAwesomeIcon icon={faChevronLeft} />
         </button>
+        <button className="modal-next absolute right-2 top-1/2 z-50 -translate-y-1/2 text-4xl text-white/50 transition-colors hover:text-white">
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
+
+        <div className="modal-pagination absolute bottom-0 left-0 z-20 flex w-full justify-center gap-1"></div>
       </Swiper>
     </div>
   );
