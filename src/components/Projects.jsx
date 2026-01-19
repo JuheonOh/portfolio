@@ -72,7 +72,7 @@ export default function Projects() {
         "그린카를 모티브로 한 가상의 전기 자동차 대여 예약 서비스입니다.",
       feature: "위치 기반 대여소 찾기, 날짜/차량 선택 예약, 관리자 대시보드",
       githubUrl: "https://github.com/JuheonOh/electrip",
-      paperUrl: `${BASE_URL}papers/vehicle_renter_system_paper.pdf`,
+      paperUrl: `${BASE_URL}papers/vehicle_rentar_system_paper.pdf`,
       usingSkills: [
         {
           name: "Frontend",
