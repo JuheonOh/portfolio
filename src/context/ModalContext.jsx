@@ -61,7 +61,7 @@ export function ModalProvider({ children }) {
           >
             <button
               onClick={closeModal}
-              className="absolute right-4 top-4 z-10 text-white/70 hover:text-white"
+              className="absolute right-4 top-4 z-50 text-white/70 hover:text-white"
             >
               <FontAwesomeIcon icon={faTimes} className="text-2xl" />
             </button>
