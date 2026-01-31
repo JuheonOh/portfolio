@@ -227,7 +227,7 @@ function TimelineItem({ item, index, onPlayClick }) {
             <span className="mb-1 inline-block rounded bg-yellow-400/10 px-2 py-0.5 text-xs font-bold text-yellow-400">
               {item.year}
             </span>
-            <h3 className="text-lg font-bold leading-tight text-white">
+            <h3 className="text-lg font-bold leading-tight text-white break-keep">
               {item.title}
             </h3>
             <p className="mt-1 text-sm font-medium text-slate-400">
