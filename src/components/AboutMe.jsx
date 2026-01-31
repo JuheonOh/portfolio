@@ -67,7 +67,7 @@ export default function AboutMe() {
               className="absolute -left-4 -top-6 text-5xl text-slate-700/50 md:-left-6 md:-top-8 md:text-6xl"
             />
 
-            <p className="text-xl font-light leading-relaxed text-slate-300 md:text-2xl">
+            <p className="break-keep text-xl font-light leading-relaxed text-slate-300 md:text-2xl">
               <span className="font-bold text-yellow-400">기능경기대회</span>{" "}
               수상 경험으로 다져진 끈기와 기술력을 바탕으로,
               <br className="hidden md:block" /> 안정적이고 직관적인 웹 서비스를

@@ -37,11 +37,13 @@ export default function MainVisual() {
           className="animate-fade-up opacity-0"
           style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
         >
-          <p className="mb-2 text-lg font-light text-gray-200 md:text-2xl">
-            견고한 백엔드와 직관적인 프론트엔드를 연결하는 개발자
+          <p className="mb-2 break-keep text-lg font-light text-gray-200 md:text-2xl">
+            견고한 백엔드와 직관적인 프론트엔드를{" "}
+            <br className="block xs:hidden" /> 연결하는 개발자
           </p>
-          <p className="text-base font-light text-gray-400 md:text-lg">
-            기능경기대회에서 검증된 기술력으로 가치 있는 웹 서비스를 만듭니다.
+          <p className="break-keep text-base font-light text-gray-400 md:text-lg">
+            기능경기대회에서 검증된 기술력으로 가치 있는{" "}
+            <br className="block xs:hidden" /> 웹 서비스를 만듭니다.
           </p>
         </div>
 
