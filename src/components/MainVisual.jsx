@@ -1,6 +1,7 @@
 import { faAnglesDown, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import scrollSection from "../utils/scrollSection";
+import mainVisual from "../assets/images/main/main-visual.jpg";
 
 export default function MainVisual() {
   return (
@@ -11,7 +12,7 @@ export default function MainVisual() {
       {/* 배경 이미지 패럴랙스 효과 */}
       <div
         className="absolute inset-0 -z-20 bg-cover bg-fixed bg-center bg-no-repeat"
-        style={{ backgroundImage: "url(images/main/main-visual.jpg)" }}
+        style={{ backgroundImage: `url(${mainVisual})` }}
       />
       {/* 배경 그라데이션 */}
       <div className="absolute inset-0 -z-10 bg-black/40" />

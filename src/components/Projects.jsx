@@ -7,7 +7,6 @@ import {
   faExpand,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
 import { Navigation, Pagination, Keyboard, Zoom } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -21,8 +20,8 @@ import "swiper/css/pagination";
 // 섹션 헤더 컴포넌트
 import SectionHeader from "./SectionHeader";
 
-// 기본 경로 가져오기 (배포 시 경로 문제 해결용)
-const BASE_URL = import.meta.env.BASE_URL;
+// 프로젝트 데이터 임포트
+import { projects } from "../data/projectData";
 
 export default function Projects() {
   const { openModal } = useModal();
@@ -34,97 +33,6 @@ export default function Projects() {
       <ImageGalleryContent images={images} initialIndex={initialIndex} />,
     );
   };
-
-  // --- 프로젝트 데이터 정의 ---
-  const auction = {
-    title: "실시간 중고 경매 플랫폼",
-    date: "2024. 09",
-    collaboration: "개인 프로젝트",
-    swiperClassName: "swiper-auction",
-    swiperImageFolder: "auction", // 이미지를 불러올 폴더명
-    projectInfo: {
-      description:
-        "이베이, 옥션을 참고하여 만든 실시간 중고 경매 플랫폼 입니다.",
-      feature:
-        "실시간 입찰(WebSocket), SSE 알림, 경매 생성/관리, 입찰 내역 조회",
-      githubUrl: "https://github.com/JuheonOh/realtime-auction-spring",
-      paperUrl: `${BASE_URL}papers/real-time_auction_system_paper.pdf`,
-      usingSkills: [
-        {
-          name: "Frontend",
-          tags: ["React", "Redux Toolkit", "TailwindCSS", "Axios", "WebSocket"],
-        },
-        {
-          name: "Backend",
-          tags: ["Spring Boot", "Spring Security", "JPA", "Redis", "MariaDB"],
-        },
-      ],
-    },
-  };
-
-  const electrip = {
-    title: "Electrip (전기차 대여)",
-    date: "2023. 03",
-    collaboration: "개인 프로젝트",
-    swiperClassName: "swiper-electrip",
-    swiperImageFolder: "electrip",
-    projectInfo: {
-      description:
-        "그린카를 모티브로 한 가상의 전기 자동차 대여 예약 서비스입니다.",
-      feature: "위치 기반 대여소 찾기, 날짜/차량 선택 예약, 관리자 대시보드",
-      githubUrl: "https://github.com/JuheonOh/electrip",
-      paperUrl: `${BASE_URL}papers/vehicle_rentar_system_paper.pdf`,
-      usingSkills: [
-        {
-          name: "Frontend",
-          tags: ["Next.js", "Bootstrap", "Swiper", "Redux"],
-        },
-        {
-          name: "Backend",
-          tags: ["Next.js API", "Express.js", "PostgreSQL"],
-        },
-      ],
-    },
-  };
-
-  const ohbike = {
-    title: "Oh! Bike 쇼핑몰",
-    date: "2019. 11",
-    collaboration: "개인 프로젝트",
-    swiperClassName: "swiper-ohbike",
-    swiperImageFolder: "ohbike",
-    projectInfo: {
-      description: "바이크 용품 전문 쇼핑몰 웹사이트입니다.",
-      feature: "카테고리별 상품 조회, 장바구니/주문, 관리자 상품 관리",
-      githubUrl: "https://github.com/JuheonOh/bike-gear-shoppingmall-express",
-      usingSkills: [
-        { name: "Frontend", tags: ["Pug", "jQuery", "Ajax", "Slick"] },
-        { name: "Backend", tags: ["Express.js", "MariaDB"] },
-      ],
-    },
-  };
-
-  const bbs = {
-    title: "바이크 중고거래 장터",
-    date: "2019. 09",
-    collaboration: "개인 프로젝트",
-    swiperClassName: "swiper-bbs",
-    swiperImageFolder: "bbs",
-    projectInfo: {
-      description: "커뮤니티 카페 형식을 참고한 중고 거래 게시판입니다.",
-      feature: "무한 스크롤, 다중 이미지 업로드 및 미리보기, 게시글 CRUD",
-      githubUrl: "https://github.com/JuheonOh/bbs-spring",
-      usingSkills: [
-        {
-          name: "Stack",
-          tags: ["Spring Legacy", "MariaDB", "Bootstrap", "jQuery"],
-        },
-      ],
-    },
-  };
-
-  // 화면에 렌더링할 프로젝트 목록 배열
-  const projects = [auction, electrip, ohbike];
 
   return (
     <section
@@ -160,7 +68,7 @@ function ProjectCard(param) {
     date,
     collaboration,
     swiperClassName,
-    swiperImageFolder,
+    images,
     projectInfo,
     onImageClick,
   } = param;
@@ -173,7 +81,7 @@ function ProjectCard(param) {
         <div className="relative h-full overflow-hidden rounded-xl border border-slate-800 bg-slate-950 shadow-inner">
           <SlideAnimation
             swiperClassName={swiperClassName}
-            swiperImageFolder={swiperImageFolder}
+            images={images}
             onImageClick={onImageClick}
           />
         </div>
@@ -265,28 +173,9 @@ function ProjectCard(param) {
 }
 
 // --- 카드 내부의 이미지 슬라이더 ---
-function SlideAnimation({ swiperClassName, swiperImageFolder, onImageClick }) {
-  const [images, setImages] = useState([]);
-
-  // 특정 폴더의 이미지를 동적으로 불러오기
-  useEffect(() => {
-    const loadImages = async () => {
-      try {
-        const imageFiles = import.meta.glob(
-          `../../public/images/projects/**/*.{png,jpg,jpeg,gif}`,
-        );
-        // 파일 경로에서 필요한 부분만 추출하여 URL 배열 생성
-        const imageUrls = Object.keys(imageFiles)
-          .filter((path) => path.includes(swiperImageFolder))
-          .map((path) => path.replace("../../public/", ""));
-        setImages(imageUrls);
-      } catch (error) {
-        console.error("이미지 로딩 오류", error);
-      }
-    };
-
-    loadImages();
-  }, [swiperImageFolder]);
+function SlideAnimation({ swiperClassName, images, onImageClick }) {
+  // 이미지가 없으면 렌더링하지 않음
+  if (!images || images.length === 0) return null;
 
   return (
     <div className="group/swiper relative h-full w-full">

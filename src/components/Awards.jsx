@@ -13,8 +13,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useModal } from "../context/ModalContext";
 import YouTubePlayer from "./YouTubePlayer";
 import SectionHeader from "./SectionHeader";
+import awardsBg from "../assets/images/awards/awards_bg.jpg";
 
-const BASE_URL = import.meta.env.BASE_URL;
+// 수상 내역 데이터 임포트
+import { awards } from "../data/awardData.js";
 
 export default function Awards() {
   const { openModal } = useModal();
@@ -22,77 +24,6 @@ export default function Awards() {
   const handlePlayClick = (url) => {
     openModal(<YouTubePlayer url={url} />);
   };
-
-  const awardsList = [
-    {
-      type: "academic",
-      year: "2025.01",
-      title: "한국컴퓨터정보학회 동계학술대회",
-      rank: "우수논문상",
-      img: "ksci_logo.jpg",
-      link: {
-        code: "https://github.com/JuheonOh/realtime-auction-spring",
-        paper: `${BASE_URL}papers/real-time_auction_system_paper.pdf`,
-      },
-    },
-    {
-      type: "college",
-      year: "2023.06",
-      title: "M&A (Metaverse & AI) 경진대회",
-      rank: "금상",
-      img: "inhatc_logo.jpg",
-      link: {
-        video: "https://youtu.be/u3lOsDAYWk0",
-      },
-    },
-    {
-      type: "webskills",
-      year: "2017.09",
-      title: "제52회 전국기능경기대회 (제주)",
-      subTitle: "웹디자인 및 개발 직종",
-      rank: "우수상 (6위)",
-      img: "2017_national.jpg",
-      link: {
-        code: "https://github.com/JuheonOh/webskills/tree/2017_%EC%A0%84%EA%B5%AD",
-      },
-    },
-    {
-      type: "webskills",
-      year: "2016.09",
-      title: "제51회 전국기능경기대회 (서울)",
-      subTitle: "웹디자인 및 개발 직종",
-      rank: "동메달",
-      img: "2016_national.jpg",
-      link: {
-        code: "https://github.com/JuheonOh/webskills/tree/2016_%EC%A0%84%EA%B5%AD",
-      },
-    },
-    {
-      type: "webskills",
-      year: "2015 ~ 2017",
-      title: "광주광역시 지방기능경기대회",
-      subTitle: "웹디자인 및 개발 직종",
-      rank: "3년 연속 수상",
-      img: "worldskills_korea.jpg",
-      details: [
-        {
-          year: "2017.04",
-          label: "금메달",
-          link: "https://github.com/JuheonOh/webskills/tree/2017_%EC%A7%80%EB%B0%A9",
-        },
-        {
-          year: "2016.04",
-          label: "금메달",
-          link: "https://github.com/JuheonOh/webskills/tree/2016_%EC%A7%80%EB%B0%A9",
-        },
-        {
-          year: "2015.04",
-          label: "동메달",
-          link: "https://github.com/JuheonOh/webskills/tree/2015_%EC%A7%80%EB%B0%A9",
-        },
-      ],
-    },
-  ];
 
   return (
     <section
@@ -103,7 +34,7 @@ export default function Awards() {
       {/* 배경 이미지 */}
       <div
         className="absolute inset-0 -z-30 bg-cover bg-center bg-no-repeat opacity-40"
-        style={{ backgroundImage: "url(images/awards/awards_bg.jpg)" }}
+        style={{ backgroundImage: `url(${awardsBg})` }}
       />
 
       {/* 배경 다크 오버레이 */}
@@ -122,7 +53,7 @@ export default function Awards() {
 
         {/* 타임라인 컨테이너 */}
         <div className="relative mx-auto max-w-4xl space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-yellow-400/50 before:to-transparent md:before:mx-auto md:before:translate-x-0">
-          {awardsList.map((item, index) => (
+          {awards.map((item, index) => (
             <TimelineItem
               key={index}
               item={item}
@@ -218,7 +149,7 @@ function TimelineItem({ item, index, onPlayClick }) {
         <div className="mb-4 flex items-center gap-4 border-b border-slate-700/50 pb-4">
           <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-yellow-400 bg-white p-1">
             <img
-              src={`images/awards/${item.img}`}
+              src={item.image}
               alt={item.title}
               className="h-full w-full object-contain"
             />
@@ -227,7 +158,7 @@ function TimelineItem({ item, index, onPlayClick }) {
             <span className="mb-1 inline-block rounded bg-yellow-400/10 px-2 py-0.5 text-xs font-bold text-yellow-400">
               {item.year}
             </span>
-            <h3 className="text-lg font-bold leading-tight text-white break-keep">
+            <h3 className="break-keep text-lg font-bold leading-tight text-white">
               {item.title}
             </h3>
             <p className="mt-1 text-sm font-medium text-slate-400">
