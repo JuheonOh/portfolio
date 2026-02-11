@@ -16,6 +16,31 @@ const getImageByFolder = (folderName) => {
 // --- 프로젝트 데이터 정의 ---
 export const projects = [
   {
+    id: "webskills",
+    title: "WebSkills Archive",
+    date: "2026. 02",
+    collaboration: "개인 프로젝트",
+    swiperClassName: "swiper-webskills",
+    swiperImageFolder: "webskills", // 이미지를 불러올 폴더명
+    images: getImageByFolder("webskills"),
+    projectInfo: {
+      description:
+        "기능경기대회 웹디자인 및 개발 직종의 과제들을 분석하고 최신 웹 환경에 맞춰 복원 및 문서화한 아카이브입니다.",
+      feature: "연도별 과제 복구, 핵심 기술 명세 작성, 반응형 레이아웃 설계",
+      githubUrl: "https://github.com/JuheonOh/webskills",
+      usingSkills: [
+        {
+          name: "Archive Stack",
+          tags: ["React", "TailwindCSS", "React Router", "Vite", "Helmet"],
+        },
+        {
+          name: "Core Techniques",
+          tags: ["Pure CSS", "Canvas API", "WebSQL", "SVG Animation"],
+        },
+      ],
+    },
+  },
+  {
     id: "auction",
     title: "실시간 중고 경매 플랫폼",
     date: "2024. 09",

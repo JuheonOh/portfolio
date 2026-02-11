@@ -8,10 +8,22 @@ export default function Archiving() {
       description: "소스 코드 저장소입니다.",
       iconSrc: "https://cdn.simpleicons.org/github/white",
       details: [
-        "기능경기대회 대회 과제 풀이 (WebSkills)",
-        "학부 시절 수강한 강의 코드",
-        "과거 프로젝트 소스 코드",
-        "Refactoring 및 Clean Code 연습",
+        "학부 시절 수강한 주요 전공 과목 코드",
+        "개인적인 Refactoring 및 Clean Code 연습",
+        "과거 프로젝트 및 사이드 프로젝트 소스",
+        "오픈소스 기여 및 라이브러리 학습 기록",
+      ],
+    },
+    {
+      title: "WebSkills Archive",
+      url: "https://juheonoh.github.io/webskills/",
+      description: "기능경기대회 기술 아카이브",
+      iconSrc: "https://cdn.simpleicons.org/internetarchive/white",
+      details: [
+        "2016-2017 전국/지방기능경기대회 과제 풀이",
+        "Pure CSS 기반 레이아웃 및 애니메이션 분석",
+        "Canvas API 및 WebSQL 활용 심화 프로젝트",
+        "프로젝트별 세부 기술 문서화 및 가이드 정립",
       ],
     },
   ];
@@ -27,7 +39,7 @@ export default function Archiving() {
 
         {/* 카드 그리드 */}
         <div
-          className="animate-fade-up mx-auto max-w-lg gap-8"
+          className="animate-fade-up mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2"
           style={{ animationDelay: "0.2s" }}
         >
           {archives.map((archive, index) => (
