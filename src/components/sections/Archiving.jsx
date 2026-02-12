@@ -1,4 +1,4 @@
-import SectionHeader from "./SectionHeader";
+import SectionHeader from "../common/SectionHeader";
 
 export default function Archiving() {
   const archives = [

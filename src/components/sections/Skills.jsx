@@ -5,7 +5,7 @@ import {
   faCodeBranch,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SectionHeader from "./SectionHeader";
+import SectionHeader from "../common/SectionHeader";
 
 export default function Skills() {
   const skillCategories = [

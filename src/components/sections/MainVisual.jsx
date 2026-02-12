@@ -1,7 +1,7 @@
 import { faAnglesDown, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import scrollSection from "../utils/scrollSection";
-import mainVisual from "../assets/images/main/main-visual.jpg";
+import scrollSection from "../../utils/scrollSection";
+import mainVisual from "../../assets/images/main/main-visual.jpg";
 
 export default function MainVisual() {
   return (

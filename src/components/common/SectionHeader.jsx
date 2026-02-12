@@ -1,6 +1,6 @@
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import scrollSection from "../utils/scrollSection";
+import scrollSection from "../../utils/scrollSection";
 
 export default function SectionHeader({ title, sectionId, description }) {
   return (

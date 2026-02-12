@@ -10,13 +10,13 @@ import {
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { useModal } from "../context/ModalContext";
-import YouTubePlayer from "./YouTubePlayer";
-import SectionHeader from "./SectionHeader";
-import awardsBg from "../assets/images/awards/awards_bg.jpg";
+import { useModal } from "../../context/ModalContext";
+import awardsBg from "../../assets/images/awards/awards_bg.jpg";
+import SectionHeader from "../common/SectionHeader";
+import YouTubePlayer from "../common/YouTubePlayer";
 
 // 수상 내역 데이터 임포트
-import { awards } from "../data/awardData.js";
+import { awards } from "../../data/awardData.js";
 
 export default function Awards() {
   const { openModal } = useModal();

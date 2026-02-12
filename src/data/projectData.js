@@ -3,7 +3,7 @@ const BASE_URL = import.meta.env.BASE_URL;
 
 // --- 프로젝트 전체 이미지 임포트 ---
 const allProjectImages = import.meta.glob(
-  `../assets/images/projects/**/*.{png,jpg,jpeg,gif}`,
+  `../assets/images/projects/**/*.{png,jpg,jpeg,gif,PNG,JPG,JPEG,GIF}`,
   { eager: true, query: "?url", import: "default" },
 );
 
