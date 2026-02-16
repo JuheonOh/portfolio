@@ -20,12 +20,12 @@ export default function Projects() {
       id="projects"
       className="min-h-screen w-full bg-slate-950 py-20 text-white lg:py-28"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* 공통 섹션 헤더 컴포넌트 */}
         <SectionHeader title="PROJECTS" sectionId="projects" />
 
         {/* 프로젝트 카드 리스트 영역 */}
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-12 sm:gap-16">
           {projects.map((project, index) => (
             <div
               key={index}

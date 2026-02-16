@@ -17,7 +17,7 @@ export default function ProjectCard({
 }) {
   return (
     // 카드 전체 컨테이너
-    <div className="group flex flex-col items-stretch gap-8 rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl transition-all duration-300 hover:border-slate-700 md:p-8 lg:flex-row lg:gap-12">
+    <div className="group flex flex-col items-stretch gap-6 rounded-3xl border border-slate-800 bg-slate-900 p-5 shadow-2xl transition-all duration-300 hover:border-slate-700 sm:gap-8 md:p-8 lg:flex-row lg:gap-12">
       {/* 왼쪽 이미지 슬라이더 영역 */}
       <div className="aspect-video w-full flex-shrink-0 lg:w-1/2">
         <div className="relative h-full overflow-hidden rounded-xl border border-slate-800 bg-slate-950 shadow-inner">
@@ -34,7 +34,7 @@ export default function ProjectCard({
         {/* 제목 및 날짜 */}
         <div className="flex flex-col gap-2 border-b border-slate-800 pb-4">
           <div className="flex flex-col-reverse items-start gap-2 md:flex-row md:items-center md:justify-between">
-            <h3 className="break-keep text-2xl font-bold text-white transition-colors group-hover:text-yellow-400 md:text-3xl">
+            <h3 className="break-keep text-xl font-bold text-white transition-colors group-hover:text-yellow-400 sm:text-2xl md:text-3xl">
               {title}
             </h3>
             <span className="shrink-0 rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs font-bold text-slate-400">
@@ -45,7 +45,7 @@ export default function ProjectCard({
         </div>
 
         {/* 프로젝트 설명 */}
-        <p className="break-keep text-lg leading-relaxed text-slate-300">
+        <p className="break-keep text-sm leading-relaxed text-slate-300 sm:text-base">
           {projectInfo.description}
         </p>
 
@@ -58,7 +58,7 @@ export default function ProjectCard({
             />
             주요 기능
           </h4>
-          <p className="break-keep rounded-lg bg-slate-800/50 p-3 text-sm leading-relaxed text-slate-400">
+          <p className="break-keep rounded-lg bg-slate-800/50 p-2.5 text-sm leading-relaxed text-slate-400 sm:p-3">
             {projectInfo.feature}
           </p>
         </div>
@@ -85,14 +85,14 @@ export default function ProjectCard({
         </div>
 
         {/* 하단 링크 버튼들 */}
-        <div className="flex flex-col gap-3 pt-4 md:flex-row md:items-center">
+        <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:items-center">
           {/* 논문 링크가 존재할 경우에만 렌더링 */}
           {projectInfo.paperUrl && (
             <a
               href={projectInfo.paperUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:bg-yellow-400 hover:shadow-yellow-400/20 lg:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-2.5 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:bg-yellow-400 hover:shadow-yellow-400/20 sm:px-6 sm:py-3 lg:w-auto"
             >
               <FontAwesomeIcon icon={faLink} className="text-xl" />
               <span>관련 논문 보기</span>
@@ -103,7 +103,7 @@ export default function ProjectCard({
             href={projectInfo.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:bg-yellow-400 hover:shadow-yellow-400/20 lg:ml-auto lg:w-auto"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-2.5 font-bold text-slate-900 shadow-lg transition-all duration-300 hover:bg-yellow-400 hover:shadow-yellow-400/20 sm:px-6 sm:py-3 lg:ml-auto lg:w-auto"
           >
             <FontAwesomeIcon icon={faGithub} className="text-xl" />
             <span>GitHub Repository</span>

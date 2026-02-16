@@ -52,7 +52,7 @@ export default function Awards() {
         <SectionHeader title="AWARDS" sectionId="awards" />
 
         {/* 타임라인 컨테이너 */}
-        <div className="relative mx-auto max-w-4xl space-y-8 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-yellow-400/50 before:to-transparent md:before:mx-auto md:before:translate-x-0">
+        <div className="relative mx-auto max-w-4xl space-y-6 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:-translate-x-px before:bg-gradient-to-b before:from-transparent before:via-yellow-400/50 before:to-transparent md:before:mx-auto md:before:translate-x-0 sm:space-y-8">
           {awards.map((item, index) => (
             <TimelineItem
               key={index}
@@ -142,11 +142,11 @@ function TimelineItem({ item, index, onPlayClick }) {
 
       {/* 카드 내용 */}
       <div
-        className={`ml-14 w-full rounded-2xl border border-slate-700/50 bg-slate-900/60 p-6 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/30 hover:shadow-yellow-400/5 md:ml-0 md:w-[45%] ${
+        className={`ml-14 w-full rounded-2xl border border-slate-700/50 bg-slate-900/60 p-5 shadow-xl backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-yellow-400/30 hover:shadow-yellow-400/5 sm:p-6 md:ml-0 md:w-[45%] ${
           isEven ? "md:mr-auto" : "md:ml-auto"
         }`}
       >
-        <div className="mb-4 flex items-center gap-4 border-b border-slate-700/50 pb-4">
+        <div className="mb-4 flex flex-col gap-3 border-b border-slate-700/50 pb-4 sm:flex-row sm:items-center sm:gap-4">
           <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-yellow-400 bg-white p-1">
             <img
               src={item.image}
@@ -158,10 +158,10 @@ function TimelineItem({ item, index, onPlayClick }) {
             <span className="mb-1 inline-block rounded bg-yellow-400/10 px-2 py-0.5 text-xs font-bold text-yellow-400">
               {item.year}
             </span>
-            <h3 className="break-keep text-lg font-bold leading-tight text-white">
+            <h3 className="break-keep text-base font-bold leading-tight text-white sm:text-lg">
               {item.title}
             </h3>
-            <p className="mt-1 text-sm font-medium text-slate-400">
+            <p className="mt-1 text-xs font-medium text-slate-400 sm:text-sm">
               {item.subTitle && <span className="block">{item.subTitle}</span>}
               <span className="text-yellow-200">{item.rank}</span>
             </p>
@@ -173,7 +173,7 @@ function TimelineItem({ item, index, onPlayClick }) {
             {item.details.map((detail, i) => (
               <li
                 key={i}
-                className="flex items-center justify-between rounded-lg bg-slate-800/50 p-2 text-sm text-slate-300 transition-colors hover:bg-slate-800"
+                className="flex flex-wrap items-center justify-between gap-2 rounded-lg bg-slate-800/50 p-2 text-sm text-slate-300 transition-colors hover:bg-slate-800"
               >
                 <span>
                   <span className="font-bold text-slate-400">

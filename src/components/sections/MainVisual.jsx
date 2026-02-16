@@ -23,10 +23,10 @@ export default function MainVisual() {
           className="animate-fade-up opacity-0"
           style={{ animationDelay: "0.2s", animationFillMode: "forwards" }}
         >
-          <h2 className="mb-2 text-xl font-bold tracking-widest text-yellow-400 md:text-2xl">
+          <h2 className="mb-2 text-base font-bold tracking-widest text-yellow-400 sm:text-xl md:text-2xl">
             WEB DEVELOPER PORTFOLIO
           </h2>
-          <h1 className="mb-6 text-6xl font-black md:text-8xl">오주헌</h1>
+          <h1 className="mb-6 text-5xl font-black sm:text-6xl md:text-8xl">오주헌</h1>
         </div>
 
         <div
@@ -38,11 +38,11 @@ export default function MainVisual() {
           className="animate-fade-up opacity-0"
           style={{ animationDelay: "0.6s", animationFillMode: "forwards" }}
         >
-          <p className="mb-2 break-keep text-lg font-light text-gray-200 md:text-2xl">
+          <p className="mb-2 break-keep text-base font-light text-gray-200 sm:text-lg md:text-2xl">
             견고한 백엔드와 직관적인 프론트엔드를{" "}
             <br className="block xs:hidden" /> 연결하는 개발자
           </p>
-          <p className="break-keep text-base font-light text-gray-400 md:text-lg">
+          <p className="break-keep text-sm font-light text-gray-400 sm:text-base md:text-lg">
             기능경기대회에서 검증된 기술력으로 가치 있는{" "}
             <br className="block xs:hidden" /> 웹 서비스를 만듭니다.
           </p>
@@ -55,7 +55,7 @@ export default function MainVisual() {
         >
           <button
             onClick={() => scrollSection("about-me")}
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-yellow-400 hover:text-black hover:shadow-[0_0_20px_rgba(250,204,21,0.5)]"
+            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white/10 px-6 py-3 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:bg-yellow-400 hover:text-black hover:shadow-[0_0_20px_rgba(250,204,21,0.5)] sm:px-8 sm:py-4 sm:text-lg"
           >
             <span className="mr-2">About Me</span>
             <FontAwesomeIcon

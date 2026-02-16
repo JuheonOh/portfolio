@@ -21,8 +21,8 @@ export default function ProjectSlide({
   return (
     <div className="group/swiper relative h-full w-full">
       {/* 호버 시 나타나는 전체화면 아이콘 */}
-      <div className="pointer-events-none absolute right-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 text-white opacity-100 transition-opacity lg:opacity-0 lg:group-hover/swiper:opacity-100">
-        <FontAwesomeIcon icon={faExpand} className="text-sm" />
+      <div className="pointer-events-none absolute right-3 top-3 z-20 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white opacity-100 transition-opacity sm:right-4 sm:top-4 sm:h-8 sm:w-8 lg:opacity-0 lg:group-hover/swiper:opacity-100">
+        <FontAwesomeIcon icon={faExpand} className="text-xs sm:text-sm" />
       </div>
 
       <Swiper
@@ -65,13 +65,13 @@ export default function ProjectSlide({
 
         {/* 커스텀 좌우 화살표 */}
         <button
-          className={`${swiperClassName}-prev absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-100 transition-opacity hover:bg-yellow-400 hover:text-black active:scale-95 lg:opacity-0 lg:group-hover/swiper:opacity-100`}
+          className={`${swiperClassName}-prev absolute left-2 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-100 transition-opacity hover:bg-yellow-400 hover:text-black active:scale-95 sm:h-10 sm:w-10 lg:opacity-0 lg:group-hover/swiper:opacity-100`}
           onClick={(e) => e.stopPropagation()}
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <button
-          className={`${swiperClassName}-next absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-100 transition-opacity hover:bg-yellow-400 hover:text-black active:scale-95 lg:opacity-0 lg:group-hover/swiper:opacity-100`}
+          className={`${swiperClassName}-next absolute right-2 top-1/2 z-20 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-black/50 text-white opacity-100 transition-opacity hover:bg-yellow-400 hover:text-black active:scale-95 sm:h-10 sm:w-10 lg:opacity-0 lg:group-hover/swiper:opacity-100`}
           onClick={(e) => e.stopPropagation()}
         >
           <FontAwesomeIcon icon={faChevronRight} />

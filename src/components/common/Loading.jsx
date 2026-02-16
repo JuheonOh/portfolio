@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
     <div className="min-h-screen w-full bg-slate-950 py-20 lg:py-28">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* 섹션 헤더 스켈레톤 (Title Area) */}
         <div className="mx-auto mb-16 flex flex-col items-center gap-4">
           <div className="h-4 w-8 animate-pulse rounded bg-slate-800"></div>
@@ -10,7 +10,7 @@ export default function Loading() {
         </div>
 
         {/* 콘텐츠 카드 스켈레톤 (Generic Card Grid) */}
-        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
           {[1, 2].map((item) => (
             <div
               key={item}

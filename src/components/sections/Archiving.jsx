@@ -33,13 +33,13 @@ export default function Archiving() {
       id="archiving"
       className="min-h-screen w-full bg-slate-950 py-20 text-white lg:py-28"
     >
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-4 sm:px-6">
         {/* 헤더 */}
         <SectionHeader title="ARCHIVING" sectionId="archiving" />
 
         {/* 카드 그리드 */}
         <div
-          className="animate-fade-up mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-2"
+          className="animate-fade-up mx-auto grid max-w-5xl grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2"
           style={{ animationDelay: "0.2s" }}
         >
           {archives.map((archive, index) => (
@@ -48,7 +48,7 @@ export default function Archiving() {
               href={archive.url}
               target="_blank"
               rel="noreferrer noopener"
-              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-8 shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-slate-700 hover:shadow-slate-900/50"
+              className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-slate-800 bg-slate-900 p-6 shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-slate-700 hover:shadow-slate-900/50 sm:p-8"
             >
               {/* 호버 시 배경 강조 효과 */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -63,10 +63,10 @@ export default function Archiving() {
                   />
                 </div>
                 <div>
-                  <h3 className={`text-3xl font-bold text-white`}>
+                  <h3 className={`text-2xl font-bold text-white sm:text-3xl`}>
                     {archive.title}
                   </h3>
-                  <p className="mt-1 text-sm font-light text-slate-400">
+                  <p className="mt-1 text-xs font-light text-slate-400 sm:text-sm">
                     {archive.url.replace("https://", "")}
                   </p>
                 </div>
@@ -74,7 +74,7 @@ export default function Archiving() {
 
               {/* 설명 및 리스트 */}
               <div className="relative z-10 flex grow flex-col">
-                <p className="mb-6 text-lg font-medium text-slate-200">
+                <p className="mb-6 text-base font-medium text-slate-200 sm:text-lg">
                   <span className="font-bold text-yellow-400">
                     {archive.description.split(" ")[0]}
                   </span>{" "}
@@ -83,7 +83,7 @@ export default function Archiving() {
                   )}
                 </p>
 
-                <ul className="list-disc space-y-3 pl-5 text-slate-400 marker:text-yellow-400">
+                <ul className="list-disc space-y-3 pl-5 text-sm text-slate-400 marker:text-yellow-400 sm:text-base">
                   {archive.details.map((detail, i) => (
                     <li key={i} className="leading-relaxed">
                       {detail}

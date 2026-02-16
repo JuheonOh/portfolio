@@ -91,16 +91,16 @@ export default function Header() {
     <header>
       <nav
         className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${isScrolled
-            ? "border-b border-white/5 bg-slate-950/80 py-4 shadow-lg backdrop-blur-md"
-            : "bg-transparent py-6"
+            ? "border-b border-white/5 bg-slate-950/80 py-3 shadow-lg backdrop-blur-md sm:py-4"
+            : "bg-transparent py-4 sm:py-6"
           }`}
       >
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between">
             {/* 로고 */}
             <button
               onClick={() => scrollSection("main-visual")}
-              className="group flex items-center gap-2 text-2xl font-black text-white transition-opacity hover:opacity-80"
+              className="group flex items-center gap-2 text-xl font-black text-white transition-opacity hover:opacity-80 sm:text-2xl"
             >
               <FontAwesomeIcon
                 icon={faCode}
@@ -137,7 +137,7 @@ export default function Header() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-2xl text-white transition-colors hover:text-yellow-400"
+                className="text-xl text-white transition-colors hover:text-yellow-400 sm:text-2xl"
               >
                 <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
               </button>
@@ -156,7 +156,7 @@ export default function Header() {
               }`}
             onClick={(e) => e.stopPropagation()} // 메뉴 내부 클릭 시 닫기 방지
           >
-            <ul className="flex flex-col items-center gap-8 py-10">
+            <ul className="flex flex-col items-center gap-6 py-8 sm:gap-8 sm:py-10">
               {menu_list.map((menu) => (
                 <li key={menu.id}>
                   <button
