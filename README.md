@@ -99,7 +99,7 @@ npm run preview
 
 ## 커스텀 데이터 연동
 
-`src/data/projectData.js`와 `src/data/awards.js`에서 포트폴리오 콘텐츠를 관리합니다.
+`src/data/projectData.js`와 `src/data/awardData.js`에서 포트폴리오 콘텐츠를 관리합니다.
 
 - 프로젝트 목록(제목, 기간, 사용 기술, 링크, 이미지 폴더) 수정
 - 수상 이력(연도, 수상 구분, 상세 링크) 수정
