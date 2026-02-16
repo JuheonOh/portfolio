@@ -1,8 +1,5 @@
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import {
-  faCheckCircle,
-  faLink,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faLink } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ProjectSlide from "./ProjectSlide";
 
@@ -19,7 +16,7 @@ export default function ProjectCard({
     // 카드 전체 컨테이너
     <div className="group flex flex-col items-stretch gap-6 rounded-3xl border border-slate-800 bg-slate-900 p-5 shadow-2xl transition-all duration-300 hover:border-slate-700 sm:gap-8 md:p-8 lg:flex-row lg:gap-12">
       {/* 왼쪽 이미지 슬라이더 영역 */}
-      <div className="aspect-video w-full flex-shrink-0 lg:w-1/2">
+      <div className="aspect-square w-full flex-shrink-0 overflow-hidden lg:w-1/2">
         <div className="relative h-full overflow-hidden rounded-xl border border-slate-800 bg-slate-950 shadow-inner">
           <ProjectSlide
             swiperClassName={swiperClassName}

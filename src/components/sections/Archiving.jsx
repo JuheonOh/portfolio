@@ -1,4 +1,7 @@
 import SectionHeader from "../common/SectionHeader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faBookOpen } from "@fortawesome/free-solid-svg-icons";
 
 export default function Archiving() {
   const archives = [
@@ -6,7 +9,7 @@ export default function Archiving() {
       title: "GitHub",
       url: "https://github.com/JuheonOh",
       description: "소스 코드 저장소입니다.",
-      iconSrc: "https://cdn.simpleicons.org/github/white",
+      icon: faGithub,
       details: [
         "학부 시절 수강한 주요 전공 과목 코드",
         "개인적인 Refactoring 및 Clean Code 연습",
@@ -18,7 +21,7 @@ export default function Archiving() {
       title: "WebSkills Archive",
       url: "https://juheonoh.github.io/webskills/",
       description: "기능경기대회 기술 아카이브",
-      iconSrc: "https://cdn.simpleicons.org/internetarchive/white",
+      icon: faBookOpen,
       details: [
         "2016-2017 전국/지방기능경기대회 과제 풀이",
         "Pure CSS 기반 레이아웃 및 애니메이션 분석",
@@ -55,11 +58,10 @@ export default function Archiving() {
 
               {/* 아이콘 및 타이틀 */}
               <div className="mb-6 flex items-center gap-4">
-                <div className="h-16 w-16 shrink-0">
-                  <img
-                    src={archive.iconSrc}
-                    alt={archive.title}
-                    className="h-full w-full object-contain drop-shadow-lg"
+                <div className="h-12 w-12 shrink-0">
+                  <FontAwesomeIcon
+                    icon={archive.icon}
+                    className="h-12 w-12 text-white drop-shadow-lg"
                   />
                 </div>
                 <div>

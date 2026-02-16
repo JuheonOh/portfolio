@@ -3,7 +3,20 @@ import {
   faServer,
   faDatabase,
   faCodeBranch,
+  faLeaf,
+  faWind,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHtml5,
+  faCss3Alt,
+  faJs,
+  faReact,
+  faPhp,
+  faNodeJs,
+  faGithub,
+  faGit,
+  faDocker,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SectionHeader from "../common/SectionHeader";
 
@@ -13,17 +26,17 @@ export default function Skills() {
       title: "Front-End",
       icon: faCode,
       skills: [
-        { name: "HTML5", src: "https://cdn.simpleicons.org/html5/white" },
-        { name: "CSS3", src: "https://cdn.simpleicons.org/css/white" },
+        { name: "HTML5", icon: faHtml5 },
+        { name: "CSS3", icon: faCss3Alt },
         {
           name: "JavaScript",
-          src: "https://cdn.simpleicons.org/javascript/white",
+          icon: faJs,
         },
-        { name: "React", src: "https://cdn.simpleicons.org/react/white" },
-        { name: "Next.js", src: "https://cdn.simpleicons.org/nextdotjs/white" },
+        { name: "React", icon: faReact },
+        { name: "Next.js", icon: faCode },
         {
           name: "Tailwind",
-          src: "https://cdn.simpleicons.org/tailwindcss/white",
+          icon: faWind,
         },
       ],
     },
@@ -33,22 +46,22 @@ export default function Skills() {
       skills: [
         {
           name: "Spring Boot",
-          src: "https://cdn.simpleicons.org/springboot/white",
+          icon: faLeaf,
         },
-        { name: "Node.js", src: "https://cdn.simpleicons.org/nodedotjs/white" },
-        { name: "Express", src: "https://cdn.simpleicons.org/express/white" },
-        { name: "PHP", src: "https://cdn.simpleicons.org/php/white" },
+        { name: "Node.js", icon: faNodeJs },
+        { name: "Express", icon: faServer },
+        { name: "PHP", icon: faPhp },
       ],
     },
     {
       title: "Database",
       icon: faDatabase,
       skills: [
-        { name: "MySQL", src: "https://cdn.simpleicons.org/mysql/white" },
-        { name: "MariaDB", src: "https://cdn.simpleicons.org/mariadb/white" },
+        { name: "MySQL", icon: faDatabase },
+        { name: "MariaDB", icon: faDatabase },
         {
           name: "PostgreSQL",
-          src: "https://cdn.simpleicons.org/postgresql/white",
+          icon: faDatabase,
         },
       ],
     },
@@ -56,9 +69,9 @@ export default function Skills() {
       title: "Tools & Version",
       icon: faCodeBranch,
       skills: [
-        { name: "Git", src: "https://cdn.simpleicons.org/git/white" },
-        { name: "GitHub", src: "https://cdn.simpleicons.org/github/white" },
-        { name: "Docker", src: "https://cdn.simpleicons.org/docker/white" },
+        { name: "Git", icon: faGit },
+        { name: "GitHub", icon: faGithub },
+        { name: "Docker", icon: faDocker },
       ],
     },
   ];
@@ -95,10 +108,9 @@ export default function Skills() {
                     key={idx}
                     className="flex items-center gap-2 rounded-lg bg-slate-800/50 px-3 py-1.5 text-sm sm:py-2 sm:text-base ring-1 ring-white/5 transition-all hover:bg-slate-700 hover:ring-white/20"
                   >
-                    <img
-                      src={skill.src}
-                      alt={skill.name}
-                      className="h-6 w-6 object-contain opacity-80 group-hover:opacity-100"
+                    <FontAwesomeIcon
+                      icon={skill.icon}
+                      className="h-6 w-6 text-slate-300 opacity-80 transition-opacity group-hover:opacity-100"
                     />
                     <span className="text-sm font-medium text-slate-300 group-hover:text-white">
                       {skill.name}
