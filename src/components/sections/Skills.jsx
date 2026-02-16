@@ -3,8 +3,6 @@ import {
   faServer,
   faDatabase,
   faCodeBranch,
-  faLeaf,
-  faWind,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faHtml5,
@@ -33,11 +31,8 @@ export default function Skills() {
           icon: faJs,
         },
         { name: "React", icon: faReact },
-        { name: "Next.js", icon: faCode },
-        {
-          name: "Tailwind",
-          icon: faWind,
-        },
+        { name: "Next.js", iconSrc: "https://cdn.simpleicons.org/nextdotjs/white" },
+        { name: "Tailwind", iconSrc: "https://cdn.simpleicons.org/tailwindcss/white" },
       ],
     },
     {
@@ -46,10 +41,10 @@ export default function Skills() {
       skills: [
         {
           name: "Spring Boot",
-          icon: faLeaf,
+          iconSrc: "https://cdn.simpleicons.org/springboot/white",
         },
         { name: "Node.js", icon: faNodeJs },
-        { name: "Express", icon: faServer },
+        { name: "Express", iconSrc: "https://cdn.simpleicons.org/express/white" },
         { name: "PHP", icon: faPhp },
       ],
     },
@@ -57,11 +52,11 @@ export default function Skills() {
       title: "Database",
       icon: faDatabase,
       skills: [
-        { name: "MySQL", icon: faDatabase },
-        { name: "MariaDB", icon: faDatabase },
+        { name: "MySQL", iconSrc: "https://cdn.simpleicons.org/mysql/white" },
+        { name: "MariaDB", iconSrc: "https://cdn.simpleicons.org/mariadb/white" },
         {
           name: "PostgreSQL",
-          icon: faDatabase,
+          iconSrc: "https://cdn.simpleicons.org/postgresql/white",
         },
       ],
     },
@@ -108,10 +103,18 @@ export default function Skills() {
                     key={idx}
                     className="flex items-center gap-2 rounded-lg bg-slate-800/50 px-3 py-1.5 text-sm sm:py-2 sm:text-base ring-1 ring-white/5 transition-all hover:bg-slate-700 hover:ring-white/20"
                   >
-                    <FontAwesomeIcon
-                      icon={skill.icon}
-                      className="h-6 w-6 text-slate-300 opacity-80 transition-opacity group-hover:opacity-100"
-                    />
+                    {skill.icon ? (
+                      <FontAwesomeIcon
+                        icon={skill.icon}
+                        className="h-6 w-6 text-slate-300 opacity-80 transition-opacity group-hover:opacity-100"
+                      />
+                    ) : (
+                      <img
+                        src={skill.iconSrc}
+                        alt={skill.name}
+                        className="h-6 w-6 object-contain opacity-80 transition-opacity group-hover:opacity-100"
+                      />
+                    )}
                     <span className="text-sm font-medium text-slate-300 group-hover:text-white">
                       {skill.name}
                     </span>
