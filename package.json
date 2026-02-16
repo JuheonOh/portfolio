@@ -33,5 +33,13 @@
     "prettier-plugin-tailwindcss": "^0.6.9",
     "tailwindcss": "^3.4.17",
     "vite": "^6.4.1"
+  },
+  "overrides": {
+    "glob": "^10.5.0",
+    "@adobe/css-tools": "^4.3.2",
+    "@babel/helpers": "^7.26.10",
+    "@babel/runtime": "^7.26.10",
+    "lodash": "^4.17.23",
+    "semver": "^6.3.1"
   }
 }
