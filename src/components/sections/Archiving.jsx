@@ -14,7 +14,6 @@ export default function Archiving() {
         "학부 시절 수강한 주요 전공 과목 코드",
         "개인적인 Refactoring 및 Clean Code 연습",
         "과거 프로젝트 및 사이드 프로젝트 소스",
-        "오픈소스 기여 및 라이브러리 학습 기록",
       ],
     },
     {
